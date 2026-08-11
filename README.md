@@ -1,54 +1,86 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository provides a minimal yet powerful setup for building React applications with TypeScript and Vite. It includes configurations for development, linting, and production builds, ensuring a smooth workflow from start to finish.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**: Latest version of React for building dynamic UIs.
+- **TypeScript**: Strong typing for better code quality and maintainability.
+- **Vite**: Blazing-fast build tool with Hot Module Replacement (HMR).
+- **ESLint**: Pre-configured for linting with optional type-aware rules.
+- **Minimal Dependencies**: Focused setup with only essential dependencies.
 
-## Expanding the ESLint configuration
+## Quick Start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/MukulPretham/react-test.git
+   cd react-test
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**:
+   Navigate to `http://localhost:5173` to see the app in action.
+
+## Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the application for production.
+- `npm run lint`: Run ESLint to check for linting errors.
+- `npm run preview`: Preview the production build locally.
+
+## Project Structure
+
+```
+react-test/
+├── src/
+│   ├── App.tsx       # Main React component
+│   ├── main.tsx      # Entry point for the app
+│   ├── App.css       # Styles for the App component
+│   └── assets/       # Static assets (e.g., logos)
+├── vite.config.ts    # Vite configuration
+├── tsconfig.json     # TypeScript configuration
+└── package.json      # Project metadata and dependencies
+```
+
+## Configuration
+
+### Vite
+
+The `vite.config.ts` file is minimal, using the `@vitejs/plugin-react` plugin:
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
 })
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### TypeScript
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The `tsconfig.json` references two additional configuration files:
+- `tsconfig.app.json`: For the application.
+- `tsconfig.node.json`: For Node.js-specific settings.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### ESLint
+
+The project includes ESLint for linting. For stricter rules, update the ESLint configuration as described in the [README.md](./README.md#expanding-the-eslint-configuration).
+
+## Customization
+
+- **Add Dependencies**: Install additional packages as needed.
+- **Extend ESLint**: Follow the guide in the README to enable type-aware linting or React-specific rules.
+
+## License
+
+This project is open-source and available under the MIT License.
