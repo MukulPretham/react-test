@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Boilerplate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a minimal boilerplate for a React application using TypeScript and Vite. It includes Hot Module Replacement (HMR), ESLint for linting, and a simple counter example to get started quickly.
 
-Currently, two official plugins are available:
+## Features
+- React 19 with TypeScript support
+- Vite for fast development and builds
+- ESLint configured for code quality
+- Strict Mode enabled for development best practices
+- Minimal example with a counter component
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Quick Start
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser to `http://localhost:3000`
 
-## Expanding the ESLint configuration
+## Available Scripts
+- `dev`: Starts the Vite development server
+- `build`: Builds the app for production (outputs to `dist` folder)
+- `lint`: Runs ESLint to check for code issues
+- `preview`: Previews the production build locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Structure
+```
+react-test/
+├── src/
+│   ├── main.tsx       # Entry point with React root initialization
+│   ├── App.tsx        # Main component with counter example
+│   ├── App.css        # Component styles
+│   └── index.css      # Global styles
+├── public/            # Static assets
+├── vite.config.ts     # Vite configuration
+├── tsconfig.json      # TypeScript configuration
+└── package.json       # Project dependencies and scripts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Configuration
+- **Vite**: Configured with `@vitejs/plugin-react` for React support
+- **TypeScript**: Uses modular config (`tsconfig.app.json` and `tsconfig.node.json`)
+- **ESLint**: Basic setup with potential for expansion (see original README for advanced config)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Dependencies
+- React 19
+- Vite 6
+- TypeScript 5.7
+- ESLint 9
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Extending the Project
+- Add more components in the `src` folder
+- Configure additional ESLint rules as needed
+- Customize Vite config for additional features
+
+For advanced ESLint configuration, refer to the original README section on expanding ESLint rules.
