@@ -1,54 +1,106 @@
-# React + TypeScript + Vite
+# React Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal [React](https://react.dev) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vite.dev) starter project bootstrapped from the official Vite template. It provides a lightweight base for prototyping React applications with fast hot module replacement (HMR) and linting for React Hooks and Fast Refresh.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Vite dev server** with fast hot module replacement (HMR)
+- **React 19** with TypeScript type-checking
+- **ESLint** configured for React Hooks and Fast Refresh
+- **Production builds** that type-check then bundle with Vite
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Technology | Version |
+|------------|---------|
+| [React](https://react.dev) | ^19.0.0 |
+| [React DOM](https://react.dev) | ^19.0.0 |
+| [TypeScript](https://www.typescriptlang.org/) | ~5.7.2 |
+| [Vite](https://vite.dev) | ^6.3.1 |
+| [ESLint](https://eslint.org/) | ^9.22.0 |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later recommended)
+- npm (bundled with Node) or your preferred package manager
+
+## Getting Started
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repo-url>
+cd react-test
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Start the dev server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser. Edit `src/App.tsx` — the page updates instantly thanks to HMR.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+This runs type checking (`tsc -b`) followed by `vite build`, outputting the production bundle to `dist/`.
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+Serves the `dist/` folder locally so you can verify the production bundle before deploying.
+
+### Lint
+
+```bash
+npm run lint
+```
+
+Runs ESLint over the whole project using the rules in `eslint.config.js`.
+
+## Project Structure
+
+```
+react-test/
+├── index.html              # HTML entry point
+├── package.json            # Dependencies and scripts
+├── vite.config.ts          # Vite config (uses the React plugin)
+├── tsconfig.json           # Root TS config (project references)
+├── tsconfig.app.json       # TS config for src/
+├── tsconfig.node.json      # TS config for Vite / Node files
+├── eslint.config.js        # ESLint flat config
+├── public/
+│   └── vite.svg            # Static asset served at /
+└── src/
+    ├── main.tsx            # App entry point (mounts App into #root)
+    ├── App.tsx             # Main App component (counter demo)
+    ├── App.css             # App component styles
+    ├── index.css           # Global styles
+    ├── assets/
+    │   └── react.svg       # Imported asset used in App
+    └── vite-env.d.ts       # Vite client type declarations
+```
+
+## Available Scripts
+
+| Script    | Description                                        |
+|-----------|----------------------------------------------------|
+| `npm run dev`      | Start the Vite dev server with HMR       |
+| `npm run build`    | Type-check (`tsc -b`) then build with Vite |
+| `npm run lint`     | Lint all files with ESLint                |
+| `npm run preview`  | Serve the production build locally        |
+
+## License
+
+This project is unlicensed — use it freely as a starting point for your own work.
